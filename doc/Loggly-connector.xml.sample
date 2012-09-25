@@ -1,0 +1,3 @@
+<!-- BEGIN_INCLUDE(loggly:logger) -->
+    <loggly:logger message="#[map-payload:content]" />
+<!-- END_INCLUDE(loggly:logger) -->
