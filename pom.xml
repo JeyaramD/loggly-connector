@@ -94,7 +94,7 @@
                     <systemProperties>
                         <property>
                             <name>inputKey</name>
-                            <value>${inputKey}</value>
+                            <value>${loggly.input.key}</value>
                         </property>
                     </systemProperties>
                 </configuration>
