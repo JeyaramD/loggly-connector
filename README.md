@@ -1,10 +1,10 @@
 #Loggly Cloud Connector
 
 ## Introduction
-Logs messages into loggly without blocking the mule app. All the messages are saved in a circular queue before being sent to Loggly. A different thread consumes the messages stored on it.
+Logs messages into loggly without blocking the mule app. All the messages are saved in a circular queue before being sent to Loggly. A different thread consumes the messages stored in it.
 
 ## Module docs
-Docs can be found [here](http://mulesoft.github.com/mongohq-connector/mule/mongohq-config.html).
+Docs can be found [here](http://mulesoft.github.com/loggly-connector/mule/loggly-config.html).
 
 ## FAQ
 ### Why not using the `logger` message processor that is shipped by default?
