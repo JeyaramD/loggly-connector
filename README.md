@@ -34,13 +34,13 @@ Add the following requirement to your pom.xml:
 The following snippet shows how to use it inside a flow:
 
 ```xml
-    ...
-    <loggly:config inputKey="${inputKey}" />
-    ...
+...
+<loggly:config inputKey="${inputKey}" />
+...
 
-    <flow name="testFlow">
-        <loggly:logger message="This a test."/>
-    </flow>
+<flow name="testFlow">
+    <loggly:logger message="This a test."/>
+</flow>
 ```
 
 That will log `"This is a test."` each time the flow `testFlow` is executed. 
