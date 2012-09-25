@@ -15,11 +15,11 @@ import org.apache.log4j.Logger;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.lifecycle.Stop;
 import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.rest.RestHttpClient;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 /**
  * Loggly Cloud Connector
@@ -41,7 +41,7 @@ public class LogglyConnector
         this.inputKey = inputKey;
     }
 
-    @PreDestroy
+    @Stop
     public void end() {
         this.workManager.stop();
     }

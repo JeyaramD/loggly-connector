@@ -26,7 +26,7 @@ public class AsyncWorkManager implements WorkManager {
     private static final Logger LOGGER = Logger.getLogger(AsyncWorkManager.class);
     public static final long PATIENCE = 300;
 
-    private Buffer buffer;
+    private final Buffer buffer;
 
     private Thread thread;
 
@@ -35,7 +35,7 @@ public class AsyncWorkManager implements WorkManager {
      */
     public static final String HTTPS_LOGS_LOGGLY_INPUTS = "https://logs.loggly.com/inputs/";
     private String inputKey;
-    private boolean end = false;
+    private volatile boolean end = false;
 
     public AsyncWorkManager(String inputKey) {
         this.buffer = new CircularFifoBuffer();
@@ -56,9 +56,12 @@ public class AsyncWorkManager implements WorkManager {
     @Override
     public void stop() {
         end = true;
+        synchronized (buffer) {
+            buffer.notify();
+        }
 
         LOGGER.debug("Waiting for MessageLoop thread to finish");
-        while (thread.isAlive()) {
+        if (thread.isAlive()) {
 
             try {
                 thread.join(PATIENCE);
@@ -67,11 +70,8 @@ public class AsyncWorkManager implements WorkManager {
             }
 
             LOGGER.debug("Still waiting...");
-            thread.interrupt();
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                LOGGER.error(e);
+            if (thread.isAlive()) {
+                thread.interrupt();
             }
         }
         LOGGER.debug("Finally!");
@@ -93,6 +93,7 @@ public class AsyncWorkManager implements WorkManager {
                         buffer.wait();
                     } catch (InterruptedException e) {
                         LOGGER.error(e);
+                        return;
                     }
                     while ( ! buffer.isEmpty() ) {
                         String message = (String) buffer.remove();

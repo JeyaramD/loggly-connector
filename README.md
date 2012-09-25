@@ -49,6 +49,7 @@ That will log `"This is a test."` each time the flow `testFlow` is executed.
 # Authors
 
   * Emiliano Lesende (@3miliano) - Idea
+  * Mariano de Achaval - Concurrency advisor
   * Alberto Pose (@thepose) - Implementation
   * (Add your name here!)
 
