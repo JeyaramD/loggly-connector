@@ -1,0 +1,25 @@
+{
+  "data": [
+  {
+    "timestamp": "2010-02-17T02:08:45.912Z",
+    "inputname": "solrclient",
+    "ip": "127.0.0.1",
+    "text": "btpool0-87 SolrCore.execute INFO: [repo_6] webapp=/solr path=/select/ params={sort=timestamp+desc&start=0&q=404&version=2.2&rows=100} hits=7182 status=0 QTime=0 \n"
+  },
+  {
+    "timestamp": "2010-02-17T02:08:29.123Z",
+    "inputname": "solrclient",
+    "ip": "127.0.0.1",
+    "text": "btpool0-87 SolrCore.execute INFO: [repo_6] webapp=/solr path=/select/ params={sort=timestamp+desc&start=0&q=404&version=2.2&rows=100} hits=7182 status=0 QTime=3 \n"
+  }
+  ],
+  "numFound": 2070,
+  "context": {
+    "rows": 10,
+    "from": "NOW-1DAY",
+    "until": "NOW",
+    "start": 0,
+    "query": "404",
+    "order": "desc"
+  }
+}

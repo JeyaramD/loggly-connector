@@ -1,0 +1,19 @@
+[
+  {
+      "name": "",
+      "ip": "24.4.108.196",
+      "input": [
+          {
+              "name": "zoto",
+              "id": 248
+          },
+          {
+              "name": "test",
+              "id": 501
+          }
+      ],
+      "id": 393,
+      "launched": "2010-08-18 15:46:01",
+      "resource_uri": "/api/devices/393"
+  }
+]

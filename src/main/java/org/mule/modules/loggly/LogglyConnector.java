@@ -10,14 +10,13 @@
 
 package org.mule.modules.loggly;
 
-import org.apache.commons.httpclient.HttpClient;
 import org.apache.log4j.Logger;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.lifecycle.Stop;
-import org.mule.api.annotations.param.Optional;
-import org.mule.api.annotations.rest.RestHttpClient;
+import org.mule.modules.loggly.async.AsyncWorkManager;
+import org.mule.modules.loggly.async.WorkManager;
 
 import javax.annotation.PostConstruct;
 
@@ -31,33 +30,22 @@ public class LogglyConnector
 {
     private static final Logger LOGGER = Logger.getLogger(LogglyConnector.class);
 
+    /**
+     * The work manager that handles the messages to log.
+     */
     private WorkManager workManager;
-
-    public String getInputKey() {
-        return inputKey;
-    }
-
-    public void setInputKey(String inputKey) {
-        this.inputKey = inputKey;
-    }
 
     @Stop
     public void end() {
+        /* Shutdown. Close the work manager. */
         this.workManager.stop();
     }
 
     /**
-     * Input Key
+     * Input Key to access the log-sending API.
      */
     @Configurable
-    @Optional
     private String inputKey;
-
-    /**
-     * REST Http Client
-     */
-    @RestHttpClient
-    private HttpClient httpClient = new HttpClient();
 
     @PostConstruct
     public void init() {
@@ -70,11 +58,20 @@ public class LogglyConnector
      * {@sample.xml ../../../doc/Loggly-connector.xml.sample loggly:logger}
      *
      * @param message Message to log
-     * @return Status code
      * @throws Exception error while doing the request and receiving the response
      */
     @Processor
     public void logger(String message) throws Exception {
         this.workManager.send(message);
     }
+
+    public String getInputKey() {
+        return inputKey;
+    }
+
+    public void setInputKey(String inputKey) {
+        this.inputKey = inputKey;
+    }
+
+
 }

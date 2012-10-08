@@ -8,10 +8,12 @@
  * LICENSE.txt file.
  */
 
-package org.mule.modules.loggly;
+package org.mule.modules.loggly.model;
 
-public interface WorkManager {
-    void send(String message);
+public enum FacetType {
+    DATE, IP, INPUT;
 
-    void stop();
+    public String toString() {
+        return this.name().toLowerCase();
+    }
 }

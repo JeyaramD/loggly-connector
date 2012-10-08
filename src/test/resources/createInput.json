@@ -1,0 +1,13 @@
+{
+  "name": "myinput",
+  "service": {
+      "name": "syslogtcp",
+      "display": "Syslog TCP"
+  },
+  "created": "2011-02-10 19:05:06",
+  "discover": true,
+  "discover_time": "2011-02-10 19:05:06",
+  "id": 416,
+  "port": 18249,
+  "description": "My new super input"
+}

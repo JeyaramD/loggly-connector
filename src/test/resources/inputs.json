@@ -1,0 +1,23 @@
+[
+   {
+      "name": "syslog", 
+      "service": {
+          "name": "syslogudp", 
+          "display": "Syslog UDP"
+      }, 
+      "created": "2010-09-09 20:19:47", 
+      "discover": false, 
+      "discover_time": "2010-10-25 20:30:56", 
+      "id": 26846,
+      "port": 13261, 
+      "description": "Syslog from all app servers",
+      "devices": [
+          {
+              "ip": "10.0.20.20", 
+              "resource_uri": "/api/devices/13", 
+              "name": "app-raffy-old", 
+              "id": 13
+          }
+      ] 
+   } 
+]

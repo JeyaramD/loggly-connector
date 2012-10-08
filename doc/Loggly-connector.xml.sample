@@ -1,3 +1,69 @@
 <!-- BEGIN_INCLUDE(loggly:logger) -->
     <loggly:logger message="#[map-payload:content]" />
 <!-- END_INCLUDE(loggly:logger) -->
+<!-- BEGIN_INCLUDE(loggly:search) -->
+    <loggly:search query="hello" />
+<!-- END_INCLUDE(loggly:search) -->
+<!-- BEGIN_INCLUDE(loggly:facet) -->
+    <loggly:facet query="hello" facetType="DATE" />
+<!-- END_INCLUDE(loggly:facet) -->
+<!-- BEGIN_INCLUDE(loggly:input) -->
+    <loggly:input id="1" />
+<!-- END_INCLUDE(loggly:input) -->
+<!-- BEGIN_INCLUDE(loggly:input-by-name) -->
+    <loggly:input-by-name inputName="default" />
+<!-- END_INCLUDE(loggly:input-by-name) -->
+<!-- BEGIN_INCLUDE(loggly:inputs) -->
+    <loggly:inputs />
+<!-- END_INCLUDE(loggly:inputs) -->
+<!-- BEGIN_INCLUDE(loggly:create-input) -->
+    <loggly:create-input inputName="anotherInput" description="Meaningful description goes here." service="HTTP" />
+<!-- END_INCLUDE(loggly:create-input) -->
+<!-- BEGIN_INCLUDE(loggly:add-current-device) -->
+    <loggly:add-current-device id="26846" />
+<!-- END_INCLUDE(loggly:add-current-device) -->
+<!-- BEGIN_INCLUDE(loggly:add-current-device-to-syslog514) -->
+    <loggly:add-current-device-to-syslog514 id="26846" />
+<!-- END_INCLUDE(loggly:add-current-device-to-syslog514) -->
+<!-- BEGIN_INCLUDE(loggly:remove-device) -->
+    <loggly:remove-device id="26846" />
+<!-- END_INCLUDE(loggly:remove-device) -->
+<!-- BEGIN_INCLUDE(loggly:enable-input-discovery) -->
+    <loggly:enable-input-discovery id="26846" />
+<!-- END_INCLUDE(loggly:enable-input-discovery) -->
+<!-- BEGIN_INCLUDE(loggly:disable-input-discovery) -->
+    <loggly:disable-input-discovery id="26846" />
+<!-- END_INCLUDE(loggly:disable-input-discovery) -->
+<!-- BEGIN_INCLUDE(loggly:devices) -->
+    <loggly:devices />
+<!-- END_INCLUDE(loggly:devices) -->
+<!-- BEGIN_INCLUDE(loggly:device) -->
+    <loggly:device id="26846" />
+<!-- END_INCLUDE(loggly:device) -->
+<!-- BEGIN_INCLUDE(loggly:add-device) -->
+    <loggly:add-device id="26846" ip="0.0.0.0" deviceName="deviceName" />
+<!-- END_INCLUDE(loggly:add-device) -->
+<!-- BEGIN_INCLUDE(loggly:delete-device) -->
+    <loggly:delete-device id="26846" />
+<!-- END_INCLUDE(loggly:delete-device) -->
+<!-- BEGIN_INCLUDE(loggly:delete-device-by-ip) -->
+    <loggly:delete-device-by-ip ip="0.0.0.0" />
+<!-- END_INCLUDE(loggly:delete-device-by-ip) -->
+<!-- BEGIN_INCLUDE(loggly:transform-json-to-result-set) -->
+    <loggly:transform-json-to-result-set />
+<!-- END_INCLUDE(loggly:transform-json-to-result-set) -->
+<!-- BEGIN_INCLUDE(loggly:transform-json-to-facet-result) -->
+    <loggly:transform-json-to-facet-result />
+<!-- END_INCLUDE(loggly:transform-json-to-facet-result) -->
+<!-- BEGIN_INCLUDE(loggly:transform-json-to-input) -->
+    <loggly:transform-json-to-input />
+<!-- END_INCLUDE(loggly:transform-json-to-input) -->
+<!-- BEGIN_INCLUDE(loggly:transform-json-to-inputs) -->
+    <loggly:transform-json-to-inputs />
+<!-- END_INCLUDE(loggly:transform-json-to-inputs) -->
+<!-- BEGIN_INCLUDE(loggly:transform-json-to-device) -->
+    <loggly:transform-json-to-device />
+<!-- END_INCLUDE(loggly:transform-json-to-device) -->
+<!-- BEGIN_INCLUDE(loggly:transform-json-to-devices) -->
+    <loggly:transform-json-to-devices />
+<!-- END_INCLUDE(loggly:transform-json-to-devices) -->

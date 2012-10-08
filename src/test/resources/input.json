@@ -1,0 +1,11 @@
+{
+  "name": "httptest",
+  "service": {
+      "name": "HTTP",
+      "display": "HTTP"
+  },
+  "created": "2011-01-07 19:41:33",
+  "input_token": "9076bdc4-9ed7-403a-9c85-f02da2404054",
+  "id": 26846,
+  "description": "This is an HTTP input"
+}

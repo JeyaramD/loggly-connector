@@ -8,7 +8,7 @@
  * LICENSE.txt file.
  */
 
-package org.mule.modules.loggly;
+package org.mule.modules.loggly.async;
 
 import org.apache.commons.collections.Buffer;
 import org.apache.commons.collections.buffer.CircularFifoBuffer;
@@ -18,6 +18,7 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
+import org.mule.modules.loggly.LogglyURLProvider;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -30,10 +31,6 @@ public class AsyncWorkManager implements WorkManager {
 
     private Thread thread;
 
-    /**
-     * Connection timeout
-     */
-    public static final String HTTPS_LOGS_LOGGLY_INPUTS = "https://logs.loggly.com/inputs/";
     private String inputKey;
     private volatile boolean end = false;
 
@@ -107,7 +104,7 @@ public class AsyncWorkManager implements WorkManager {
                         /* Tried to recycle the PostMethod but that kind of usage
                          * is deprecated.
                          */
-                        PostMethod postMethod = new PostMethod(HTTPS_LOGS_LOGGLY_INPUTS + inputKey);
+                        PostMethod postMethod = new PostMethod(LogglyURLProvider.HTTPS_LOGS_LOGGLY_INPUTS + inputKey);
                         postMethod.setRequestEntity(entity);
 
                         try {
