@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  LogglyConnectorLifecycleAdapter
+  LogglyTransformersProcessAdapter
 
 
 | Mule Loggly Connector
@@ -234,7 +234,7 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorCapabilitiesAdapter.html">LogglyConnectorCapabilitiesAdapter</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html">LogglyConnectorLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html">LogglyConnectorLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html">LogglyConnectorMetadataAdapater</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorProcessAdapter.html">LogglyConnectorProcessAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyRetrieveConnectorCapabilitiesAdapter.html">LogglyRetrieveConnectorCapabilitiesAdapter</a></li>
@@ -245,7 +245,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersCapabilitiesAdapter.html">LogglyTransformersCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html">LogglyTransformersLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html">LogglyTransformersMetadataAdapater</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersProcessAdapter.html">LogglyTransformersProcessAdapter</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersProcessAdapter.html">LogglyTransformersProcessAdapter</a></li>
       </ul>
     </li>
               
@@ -293,7 +293,26 @@
    
   
   
+  
+  
+
+  
    
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
   
   
   
@@ -310,36 +329,11 @@
   
   
   
-   
-  
   
 
   
    
   
-  
-  
-  
-
-  
-   
-  
-  
-  
-  
-
-  
-   
-  
-  
-  
-  
-
-  
-   
-  
-  
-   
   
   
   
@@ -367,6 +361,22 @@
   
   
    
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
   
   
   
@@ -386,9 +396,6 @@ Summary:
   
 
 
-
-  &#124; <a href="#inhfields">Inherited Fields</a>
-  
 
 
   &#124; <a href="#pubctors">Ctors</a>
@@ -425,7 +432,7 @@ Summary:
      
     
     class
-<h1>LogglyConnectorLifecycleAdapter</h1>
+<h1>LogglyTransformersProcessAdapter</h1>
 
 
 
@@ -442,7 +449,11 @@ Summary:
   
 
   
-    extends <a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html">LogglyConnectorMetadataAdapater</a><br/>
+  
+  
+
+  
+    extends <a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html">LogglyTransformersLifecycleAdapter</a><br/>
   
   
   
@@ -451,13 +462,7 @@ Summary:
   
       implements 
       
-        Disposable 
-      
-        Initialisable 
-      
-        Startable 
-      
-        Stoppable 
+        ProcessAdapter&lt;O&gt; 
       
   
   
@@ -473,7 +478,7 @@ Summary:
 
     <tr>
         
-        <td colspan="5" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="6" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -481,7 +486,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/loggly/LogglyConnector.html">org.mule.modules.loggly.LogglyConnector</a></td>
+        <td colspan="5" class="jd-inheritance-class-cell">LogglyTransformers</td>
     </tr>
     
 
@@ -491,19 +496,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorCapabilitiesAdapter.html">org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter</a></td>
-    </tr>
-    
-
-    <tr>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
-            <td class="jd-inheritance-space">&nbsp;</td>
-        
-            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
-        
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html">org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater</a></td>
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersCapabilitiesAdapter.html">org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter</a></td>
     </tr>
     
 
@@ -513,11 +506,39 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;</td>
         
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html">org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
             <td class="jd-inheritance-space">&nbsp;</td>
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.loggly.adapters.LogglyConnectorLifecycleAdapter</td>
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html">org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.loggly.adapters.LogglyTransformersProcessAdapter</td>
     </tr>
     
 
@@ -526,37 +547,6 @@ Summary:
 
 
 
-<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
-          ><img id="subclasses-direct-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
-
-  <div id="subclasses-direct">
-      <div id="subclasses-direct-list"
-              class="jd-inheritedlinks"
-              
-              >
-          
-            
-              <a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorProcessAdapter.html">LogglyConnectorProcessAdapter</a>
-            
-          
-      </div>
-      <div id="subclasses-direct-summary"
-              style="display: none;"
-              >
-  <table class="jd-sumtable-expando">
-        <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyConnectorProcessAdapter.html">LogglyConnectorProcessAdapter</a></td>
-              <td class="jd-descrcol" width="100%">A <code>LogglyConnectorProcessAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/modules/loggly/LogglyConnector.html">LogglyConnector</a></code> that enables custom processing strategies.&nbsp;</td>
-          </tr>
-  </table>
-      </div>
-  </div>
-</td></tr></table>
-
 
 
 
@@ -564,7 +554,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>A <code>LogglyConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/modules/loggly/LogglyConnector.html">LogglyConnector</a></code> that adds lifecycle methods to the pojo.
+<p>A <code>LogglyTransformersProcessAdapter</code> is a wrapper around LogglyTransformers that enables custom processing strategies.
  
 </p>
 
@@ -615,47 +605,49 @@ Summary:
   <div style="clear:left;">Inherited Constants</div></th></tr>
 
 
+
+
 <tr class="api apilevel-" >
 <td colspan="12">
 
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater" class="jd-expando-trigger closed"
-          ><img id="inherited-constants-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html">org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater</a>
-<div id="inherited-constants-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater">
-  <div id="inherited-constants-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater-list"
+<a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html">org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater</a>
+<div id="inherited-constants-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater">
+  <div id="inherited-constants-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-constants-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater-summary" style="display: none;">
+  <div id="inherited-constants-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
     
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol">String</td>
-        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#DEVKIT_BUILD">DEVKIT_BUILD</a></td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#DEVKIT_BUILD">DEVKIT_BUILD</a></td>
         <td class="jd-descrcol" width="100%"></td>
     </tr>
     
     
     <tr class=" api apilevel-" >
         <td class="jd-typecol">String</td>
-        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#DEVKIT_VERSION">DEVKIT_VERSION</a></td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#DEVKIT_VERSION">DEVKIT_VERSION</a></td>
         <td class="jd-descrcol" width="100%"></td>
     </tr>
     
     
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol">String</td>
-        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#MODULE_NAME">MODULE_NAME</a></td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#MODULE_NAME">MODULE_NAME</a></td>
         <td class="jd-descrcol" width="100%"></td>
     </tr>
     
     
     <tr class=" api apilevel-" >
         <td class="jd-typecol">String</td>
-        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#MODULE_VERSION">MODULE_VERSION</a></td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#MODULE_VERSION">MODULE_VERSION</a></td>
         <td class="jd-descrcol" width="100%"></td>
     </tr>
     
@@ -800,95 +792,14 @@ org.mule.api.lifecycle.Stoppable
 </td></tr>
 
 
-</table>
-
-
-
-
-
-
-
-<!-- =========== FIELD SUMMARY =========== -->
-<table id="inhfields" class="jd-sumtable"><tr><th>
-  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
-  <div style="clear:left;">Inherited Fields</div></th></tr>
-
-
-
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.modules.loggly.LogglyConnector" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-org.mule.modules.loggly.LogglyConnector-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html">org.mule.modules.loggly.LogglyConnector</a>
-<div id="inherited-fields-org.mule.modules.loggly.LogglyConnector">
-  <div id="inherited-fields-org.mule.modules.loggly.LogglyConnector-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-fields-org.mule.modules.loggly.LogglyConnector-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          static
-          final
-          Logger</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#LOGGER">LOGGER</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#inputKey">inputKey</a></td>
-          <td class="jd-descrcol" width="100%">Input Key to access the log-sending API.</td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
-          
-          
-          <a href="../../../../../../java/org/mule/modules/loggly/async/WorkManager.html">WorkManager</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#workManager">workManager</a></td>
-          <td class="jd-descrcol" width="100%">The work manager that handles the messages to log.</td>
-      </tr>
-      
-    
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </table>
+
+
+
+
+
 
 
 
@@ -909,7 +820,7 @@ org.mule.api.lifecycle.Stoppable
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html#LogglyConnectorLifecycleAdapter()">LogglyConnectorLifecycleAdapter</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersProcessAdapter.html#LogglyTransformersProcessAdapter()">LogglyTransformersProcessAdapter</a></span>()</nobr>
         
   </td></tr>
 
@@ -934,59 +845,11 @@ org.mule.api.lifecycle.Stoppable
             
             
             
-            
-            void</nobr>
+            &lt;P&gt;
+            ProcessTemplate&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersCapabilitiesAdapter.html">LogglyTransformersCapabilitiesAdapter</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html#dispose()">dispose</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html#initialise()">initialise</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html#start()">start</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorLifecycleAdapter.html#stop()">stop</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersProcessAdapter.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
         
   </td></tr>
 
@@ -1008,19 +871,109 @@ org.mule.api.lifecycle.Stoppable
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From class
 
-  <a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html">org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater</a>
+  <a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html">org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter</a>
 
-<div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater">
-  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater-list"
+<div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter">
+  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorMetadataAdapater-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersLifecycleAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html#dispose()">dispose</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html#initialise()">initialise</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html#start()">start</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersLifecycleAdapter.html#stop()">stop</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html">org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater</a>
+
+<div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater">
+  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersMetadataAdapater-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1036,7 +989,7 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
         
   </td></tr>
 
@@ -1052,7 +1005,7 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
         
   </td></tr>
 
@@ -1068,7 +1021,7 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#getModuleName()">getModuleName</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#getModuleName()">getModuleName</a></span>()</nobr>
         
   </td></tr>
 
@@ -1084,7 +1037,7 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorMetadataAdapater.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersMetadataAdapater.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
         
   </td></tr>
 
@@ -1098,19 +1051,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From class
 
-  <a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorCapabilitiesAdapter.html">org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter</a>
+  <a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersCapabilitiesAdapter.html">org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter</a>
 
-<div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter">
-  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter-list"
+<div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter">
+  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyConnectorCapabilitiesAdapter-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.modules.loggly.adapters.LogglyTransformersCapabilitiesAdapter-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1126,7 +1079,7 @@ From class
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/adapters/LogglyTransformersCapabilitiesAdapter.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
         
         <div class="jd-descrdiv">Returns true if this module implements such capability
  
@@ -1141,112 +1094,6 @@ From class
 </td></tr>
 
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.loggly.LogglyConnector" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.modules.loggly.LogglyConnector-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From class
-
-  <a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html">org.mule.modules.loggly.LogglyConnector</a>
-
-<div id="inherited-methods-org.mule.modules.loggly.LogglyConnector">
-  <div id="inherited-methods-org.mule.modules.loggly.LogglyConnector-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.modules.loggly.LogglyConnector-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#end()">end</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#getInputKey()">getInputKey</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#init()">init</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#logger(java.lang.String)">logger</a></span>(String message)</nobr>
-        
-        <div class="jd-descrdiv">Logs a message into a previously configured Loggly account.</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/modules/loggly/LogglyConnector.html#setInputKey(java.lang.String)">setInputKey</a></span>(String inputKey)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
 
 
 
@@ -1751,6 +1598,48 @@ From interface
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.process.ProcessAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.process.ProcessAdapter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.process.ProcessAdapter
+
+<div id="inherited-methods-org.mule.api.process.ProcessAdapter">
+  <div id="inherited-methods-org.mule.api.process.ProcessAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.process.ProcessAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            &lt;T&gt;
+            ProcessTemplate&lt;T,&nbsp;O&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getProcessTemplate</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -1785,7 +1674,7 @@ From interface
 
 
 
-<A NAME="LogglyConnectorLifecycleAdapter()"></A>
+<A NAME="LogglyTransformersProcessAdapter()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1797,7 +1686,7 @@ From interface
          
         
       </span>
-      <span class="sympad">LogglyConnectorLifecycleAdapter</span>
+      <span class="sympad">LogglyTransformersProcessAdapter</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1831,7 +1720,7 @@ From interface
 
 
 
-<A NAME="dispose()"></A>
+<A NAME="getProcessTemplate()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1841,9 +1730,9 @@ From interface
          
          
          
-        void
+        ProcessTemplate&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/loggly/adapters/LogglyTransformersCapabilitiesAdapter.html">LogglyTransformersCapabilitiesAdapter</a>&gt;
       </span>
-      <span class="sympad">dispose</span>
+      <span class="sympad">getProcessTemplate</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1857,126 +1746,6 @@ From interface
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="initialise()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">initialise</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>InitialisationException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="start()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">start</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="stop()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">stop</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
 
     </div>
 </div>
