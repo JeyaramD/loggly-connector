@@ -21,11 +21,15 @@ import org.mule.modules.loggly.async.WorkManager;
 import javax.annotation.PostConstruct;
 
 /**
- * Loggly Cloud Connector
+ * Loggly Async Logger
+ * </p>
+ * This Module handles logging of messages. The policy that is used is asynchronous, this means
+ * that each message to log is stored in a Circular Queue of a fixed size. Once the maximum size of the
+ * queue is reached the first element will be discarded and replaced with the new logged message.
  *
  * @author MuleSoft, Inc.
  */
-@Module(name="loggly", schemaVersion="1.0", friendlyName = "Loggly")
+@Module(name="loggly", schemaVersion="1.0", friendlyName = "Loggly", configElementName = "config-logger")
 public class LogglyConnector
 {
     private static final Logger LOGGER = Logger.getLogger(LogglyConnector.class);
