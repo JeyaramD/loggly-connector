@@ -235,7 +235,6 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyConnector.html">LogglyConnector</a></li>
           <li class="selected api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyRetrieveConnector.html">LogglyRetrieveConnector</a></li>
-          <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyTransformers.html">LogglyTransformers</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyURLProvider.html">LogglyURLProvider</a></li>
       </ul>
     </li>
@@ -315,6 +314,9 @@ Summary:
   &#124; <a href="#pubmethods">Methods</a>
   
 
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
 
 
   &#124; <a href="#inhmethods">Inherited Methods</a>
@@ -470,7 +472,9 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>Loggly Cloud Connector</p>
+<p>Logger Retrieve Module
+ </p>
+ Retrieve and search previously logged messages from Loggly. CRUD of input and logging devices.</p>
 
 
 
@@ -558,6 +562,17 @@ Summary:
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
+          static
+          
+          ObjectMapper</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#objectMapper">objectMapper</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
           
           
           String</nobr></td>
@@ -567,7 +582,7 @@ Summary:
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -579,7 +594,7 @@ Summary:
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -1072,10 +1087,155 @@ Summary:
   </td></tr>
 
 
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/modules/loggly/model/Device.html">Device</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#transformJsonToDevice(java.lang.String)">transformJsonToDevice</a></span>(String json)</nobr>
+        
+        <div class="jd-descrdiv">Transform JSON to Device
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            Collection&lt;<a href="../../../../../java/org/mule/modules/loggly/model/Device.html">Device</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#transformJsonToDevices(java.lang.String)">transformJsonToDevices</a></span>(String json)</nobr>
+        
+        <div class="jd-descrdiv">Transform JSON to collection of Devices
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/modules/loggly/model/LogglyFacetResult.html">LogglyFacetResult</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#transformJsonToFacetResult(java.lang.String)">transformJsonToFacetResult</a></span>(String json)</nobr>
+        
+        <div class="jd-descrdiv">Transform JSON to a Facet Search result
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/modules/loggly/model/Input.html">Input</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#transformJsonToInput(java.lang.String)">transformJsonToInput</a></span>(String json)</nobr>
+        
+        <div class="jd-descrdiv">Transform JSON to Input
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            Collection&lt;<a href="../../../../../java/org/mule/modules/loggly/model/Input.html">Input</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#transformJsonToInputs(java.lang.String)">transformJsonToInputs</a></span>(String json)</nobr>
+        
+        <div class="jd-descrdiv">Transform JSON to collection of Inputs
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../../java/org/mule/modules/loggly/model/LogglyResultSet.html">LogglyResultSet</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#transformJsonToResultSet(java.lang.String)">transformJsonToResultSet</a></span>(String json)</nobr>
+        
+        <div class="jd-descrdiv">Transform JSON to Result Set
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
 
 </table>
 
 
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            &lt;T&gt;
+            Collection&lt;T&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/modules/loggly/LogglyRetrieveConnector.html#genericJsonToListTransformer(java.lang.String)">genericJsonToListTransformer</a></span>(String json)</nobr>
+        
+  </td></tr>
+
+
+
+</table>
 
 
 
@@ -1430,6 +1590,36 @@ From class
       
   <div class="jd-tagdata jd-tagdescr"><p>REST Http Client
 </p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="objectMapper"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+         
+        ObjectMapper
+      </span>
+        objectMapper
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     
     </div>
@@ -2770,10 +2960,400 @@ From class
 </div>
 
 
+<A NAME="transformJsonToDevice(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/loggly/model/Device.html">Device</a>
+      </span>
+      <span class="sympad">transformJsonToDevice</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Transform JSON to Device
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td>JSON string to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A <code><a href="../../../../../java/org/mule/modules/loggly/model/LogglyFacetResult.html">LogglyFacetResult</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td>if the conversion fails
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transformJsonToDevices(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        Collection&lt;<a href="../../../../../java/org/mule/modules/loggly/model/Device.html">Device</a>&gt;
+      </span>
+      <span class="sympad">transformJsonToDevices</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Transform JSON to collection of Devices
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td>JSON string to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A Collection</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td>if the conversion fails
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transformJsonToFacetResult(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/loggly/model/LogglyFacetResult.html">LogglyFacetResult</a>
+      </span>
+      <span class="sympad">transformJsonToFacetResult</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Transform JSON to a Facet Search result
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td>JSON string to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A <code><a href="../../../../../java/org/mule/modules/loggly/model/LogglyFacetResult.html">LogglyFacetResult</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td>if the conversion fails
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transformJsonToInput(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/loggly/model/Input.html">Input</a>
+      </span>
+      <span class="sympad">transformJsonToInput</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Transform JSON to Input
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td>JSON string to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A <code><a href="../../../../../java/org/mule/modules/loggly/model/LogglyFacetResult.html">LogglyFacetResult</a></code></li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td>if the conversion fails
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transformJsonToInputs(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        Collection&lt;<a href="../../../../../java/org/mule/modules/loggly/model/Input.html">Input</a>&gt;
+      </span>
+      <span class="sympad">transformJsonToInputs</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Transform JSON to collection of Inputs
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td>JSON string to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A java.util.Collection</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td>if the conversion fails
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transformJsonToResultSet(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../../java/org/mule/modules/loggly/model/LogglyResultSet.html">LogglyResultSet</a>
+      </span>
+      <span class="sympad">transformJsonToResultSet</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Transform JSON to Result Set
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td>JSON string to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A <code><a href="../../../../../java/org/mule/modules/loggly/model/LogglyResultSet.html">LogglyResultSet</a></code> object</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td>if the conversion fails
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 
 
 
 <!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="genericJsonToListTransformer(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+        static 
+         
+         
+         
+        Collection&lt;T&gt;
+      </span>
+      <span class="sympad">genericJsonToListTransformer</span>
+      <span class="normal">(String json)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>json</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>IOException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 
 
 

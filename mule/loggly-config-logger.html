@@ -218,7 +218,7 @@ Summary:
 <div id="jd-header">
     org.mule.modules
 <h1>mule-module-loggly</h1>
-    config
+    config-logger
 
 </div><!-- end header -->
 
@@ -249,7 +249,11 @@ Summary:
 
 
 <h2>Module Overview</h2>
-<p>Loggly Cloud Connector</p>
+<p>Loggly Async Logger
+ </p>
+ This Module handles logging of messages. The policy that is used is asynchronous, this means
+ that each message to log is stored in a Circular Queue of a fixed size. Once the maximum size of the
+ queue is reached the first element will be discarded and replaced with the new logged message.</p>
 
 
 </div><!-- jd-descr -->
@@ -276,7 +280,7 @@ Summary:
 	 
     <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/loggly-config.html#config">&lt;loggly:config&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/loggly-config-logger.html#config-logger">&lt;loggly:config-logger&gt;</a></nobr>
         <div class="jd-descrdiv">Configure an instance of this module</div>
   </td></tr>
 </table>
@@ -294,7 +298,7 @@ Summary:
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/loggly-config.html#logger">&lt;loggly:logger&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/loggly-config-logger.html#logger">&lt;loggly:logger&gt;</a></nobr>
         
         <div class="jd-descrdiv">Logs a message into a previously configured Loggly account.</div>
         
@@ -321,7 +325,7 @@ Summary:
 
 
 <!-- ========= CONFIGURATION DETAIL ======== -->
-<A NAME="config"></A>
+<A NAME="config-logger"></A>
 <h2>Configuration</h2>
 <p>To use the this module within a flow the namespace to the module must be included. The resulting flow will look
 similar to the following:</p>

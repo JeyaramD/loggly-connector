@@ -235,7 +235,6 @@
       <ul>
           <li class="selected api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyConnector.html">LogglyConnector</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyRetrieveConnector.html">LogglyRetrieveConnector</a></li>
-          <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyTransformers.html">LogglyTransformers</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/modules/loggly/LogglyURLProvider.html">LogglyURLProvider</a></li>
       </ul>
     </li>
@@ -461,7 +460,11 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>Loggly Cloud Connector</p>
+<p>Loggly Async Logger
+ </p>
+ This Module handles logging of messages. The policy that is used is asynchronous, this means
+ that each message to log is stored in a Circular Queue of a fixed size. Once the maximum size of the
+ queue is reached the first element will be discarded and replaced with the new logged message.</p>
 
 
 
