@@ -117,7 +117,10 @@ public class AsyncWorkManager implements WorkManager {
                             postMethod.releaseConnection();
                         }
 
-                        LOGGER.info("Message [" + message + "] logged with HTTP Status code " + i + ".");
+                        /* Log only when no 2xx HTTP status codes was returned */
+                        if ( i - 200 > 100 || i - 200 < 0 ) {
+                            LOGGER.error("Message [" + message + "] logged with HTTP Status code " + i + ".");
+                        }
                     }
                 }
             }

@@ -13,7 +13,7 @@
         http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd"
       >
 
-    <loggly:config inputKey="${inputKey}" />
+    <loggly:config-logger inputKey="${inputKey}" />
     <loggly:config-retrieve subdomain="${subdomain}" username="${username}" password="${password}" />
 
     <flow name="testFlow">
@@ -108,6 +108,13 @@
         <http:inbound-endpoint address="http://localhost:8000" exchange-pattern="request-response"/>
         <jersey:resources>
             <component class="org.mule.modules.loggly.test.APIMock"/>
+        </jersey:resources>
+    </flow>
+
+    <flow name="mockAPIAsync">
+        <http:inbound-endpoint address="http://localhost:8001" exchange-pattern="request-response"/>
+        <jersey:resources>
+            <component class="org.mule.modules.loggly.test.APIAsyncMock"/>
         </jersey:resources>
     </flow>
 

@@ -139,7 +139,7 @@ class APIMock {
 
 @Path("/logs.loggly.com/")
 class APIAsyncMock {
-  @GET
+  @POST
   @Produces(Array("application/text"))
   @Path("/inputs/{id}")
   def getDevice(@PathParam("id") id: String) : InputStream = {
