@@ -4,7 +4,7 @@
 Logs messages into loggly without blocking the mule app. All the messages are saved in a circular queue before being sent to Loggly. A different thread consumes the messages stored in it.
 
 ## Module docs
-Docs can be found [here](http://mulesoft.github.com/loggly-connector/mule/loggly-config.html).
+Docs can be found [here](http://mulesoft.github.com/loggly-connector/).
 
 ## FAQ
 ### Why not using the `logger` message processor that is shipped by default?
