@@ -66,6 +66,7 @@ public class LogglyConnector
      */
     @Processor
     public void logger(String message) throws Exception {
+        LOGGER.info(message);
         this.workManager.send(message);
     }
 
