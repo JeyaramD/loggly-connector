@@ -27,7 +27,7 @@ Add the following requirement to your pom.xml:
 <dependency>
     <groupId>org.mule.modules</groupId>
     <artifactId>mule-module-loggly</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
 </dependency>
 ```
 
