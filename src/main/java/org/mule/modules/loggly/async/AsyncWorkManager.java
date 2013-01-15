@@ -11,6 +11,7 @@
 package org.mule.modules.loggly.async;
 
 import org.apache.commons.collections.Buffer;
+import org.apache.commons.collections.BufferUnderflowException;
 import org.apache.commons.collections.buffer.CircularFifoBuffer;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -22,6 +23,8 @@ import org.mule.modules.loggly.LogglyURLProvider;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class AsyncWorkManager implements WorkManager {
     private static final Logger LOGGER = Logger.getLogger(AsyncWorkManager.class);
@@ -32,21 +35,29 @@ public class AsyncWorkManager implements WorkManager {
     private Thread thread;
 
     private String inputKey;
+
+    private ReentrantReadWriteLock lock;
+
     private volatile boolean end = false;
 
     public AsyncWorkManager(String inputKey) {
         this.buffer = new CircularFifoBuffer();
         this.inputKey = inputKey;
 
+        lock = new ReentrantReadWriteLock();
+
         thread = new Thread(new MessageConsumer());
         thread.start();
     }
 
     @Override
-    public void send(String message) {
-        synchronized (this.buffer) {
+    public void send(String message) throws InterruptedException {
+        if (lock.writeLock().tryLock()) {
             this.buffer.add(message);
-            this.buffer.notify();
+        } else {
+            if( LOGGER.isDebugEnabled() ) {
+                LOGGER.debug("Unable to get a hold of a write lock");
+            }
         }
     }
 
@@ -83,27 +94,17 @@ public class AsyncWorkManager implements WorkManager {
 
         @Override
         public void run() {
-            synchronized (buffer) {
-                while(!end) {
-                    int i = -1;
-                    try {
-                        buffer.wait();
-                    } catch (InterruptedException e) {
-                        LOGGER.error(e);
-                        return;
-                    }
-                    while ( ! buffer.isEmpty() ) {
+            while (!end) {
+                int i = -1;
+                try {
+                    if (lock.readLock().tryLock(2, TimeUnit.SECONDS)) {
                         String message = (String) buffer.remove();
                         RequestEntity entity;
-                        try {
-                            entity = new StringRequestEntity(message,"application/text", "UTF-8");
-                        } catch (UnsupportedEncodingException e) {
-                            LOGGER.error(e);
-                            return;
-                        }
-                        /* Tried to recycle the PostMethod but that kind of usage
-                         * is deprecated.
-                         */
+                        entity = new StringRequestEntity(message, "application/text", "UTF-8");
+
+                            /* Tried to recycle the PostMethod but that kind of usage
+                             * is deprecated.
+                             */
                         PostMethod postMethod = new PostMethod(LogglyURLProvider.HTTPS_LOGS_LOGGLY_INPUTS + inputKey);
                         postMethod.setRequestEntity(entity);
 
@@ -117,13 +118,33 @@ public class AsyncWorkManager implements WorkManager {
                             postMethod.releaseConnection();
                         }
 
-                        /* Log only when no 2xx HTTP status codes was returned */
-                        if ( i - 200 > 100 || i - 200 < 0 ) {
+                            /* Log only when no 2xx HTTP status codes was returned */
+                        if (i - 200 > 100 || i - 200 < 0) {
                             LOGGER.error("Message [" + message + "] logged with HTTP Status code " + i + ".");
                         }
+                    } else {
+                        if( LOGGER.isDebugEnabled() ) {
+                            LOGGER.debug("Unable to get a hold of a read lock");
+                        }
+
+                        Thread.sleep(2000);
                     }
+                } catch (BufferUnderflowException bue) {
+                    //LOGGER.error(bue);
+                    // do nothing
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        return;
+                    }
+                } catch (UnsupportedEncodingException e) {
+                    LOGGER.error(e);
+                } catch (InterruptedException e) {
+                    return;
                 }
+
             }
+
         }
     }
 }

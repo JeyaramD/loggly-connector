@@ -11,7 +11,7 @@
 package org.mule.modules.loggly.async;
 
 public interface WorkManager {
-    void send(String message);
+    void send(String message) throws InterruptedException;
 
     void stop();
 }
