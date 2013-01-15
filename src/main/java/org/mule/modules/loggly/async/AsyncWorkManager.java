@@ -53,7 +53,12 @@ public class AsyncWorkManager implements WorkManager {
     @Override
     public void send(String message) throws InterruptedException {
         if (lock.writeLock().tryLock()) {
-            this.buffer.add(message);
+            try
+            {
+                this.buffer.add(message);
+            } finally {
+                lock.writeLock().unlock();
+            }
         } else {
             if( LOGGER.isDebugEnabled() ) {
                 LOGGER.debug("Unable to get a hold of a write lock");
@@ -64,9 +69,6 @@ public class AsyncWorkManager implements WorkManager {
     @Override
     public void stop() {
         end = true;
-        synchronized (buffer) {
-            buffer.notify();
-        }
 
         LOGGER.debug("Waiting for MessageLoop thread to finish");
         if (thread.isAlive()) {
@@ -97,38 +99,43 @@ public class AsyncWorkManager implements WorkManager {
             while (!end) {
                 int i = -1;
                 try {
-                    if (lock.readLock().tryLock(2, TimeUnit.SECONDS)) {
-                        String message = (String) buffer.remove();
-                        RequestEntity entity;
-                        entity = new StringRequestEntity(message, "application/text", "UTF-8");
-
-                            /* Tried to recycle the PostMethod but that kind of usage
-                             * is deprecated.
-                             */
-                        PostMethod postMethod = new PostMethod(LogglyURLProvider.HTTPS_LOGS_LOGGLY_INPUTS + inputKey);
-                        postMethod.setRequestEntity(entity);
-
-                        try {
-                            i = httpClient.executeMethod(postMethod);
-                        } catch (HttpException e) {
-                            LOGGER.error(e);
-                        } catch (IOException e) {
-                            LOGGER.error(e);
-                        } finally {
-                            postMethod.releaseConnection();
+                        String message = null;
+                        if (lock.readLock().tryLock()) {
+                            try
+                            {
+                                message = (String) buffer.get();
+                            } finally {
+                                lock.readLock().unlock();
+                            }
+                        } else {
+                            Thread.sleep(100);
                         }
 
-                            /* Log only when no 2xx HTTP status codes was returned */
-                        if (i - 200 > 100 || i - 200 < 0) {
-                            LOGGER.error("Message [" + message + "] logged with HTTP Status code " + i + ".");
-                        }
-                    } else {
-                        if( LOGGER.isDebugEnabled() ) {
-                            LOGGER.debug("Unable to get a hold of a read lock");
-                        }
+                        if( message != null ) {
+                            RequestEntity entity;
+                            entity = new StringRequestEntity(message, "application/text", "UTF-8");
 
-                        Thread.sleep(2000);
-                    }
+                                /* Tried to recycle the PostMethod but that kind of usage
+                                 * is deprecated.
+                                 */
+                            PostMethod postMethod = new PostMethod(LogglyURLProvider.HTTPS_LOGS_LOGGLY_INPUTS + inputKey);
+                            postMethod.setRequestEntity(entity);
+
+                            try {
+                                i = httpClient.executeMethod(postMethod);
+                            } catch (HttpException e) {
+                                LOGGER.error(e);
+                            } catch (IOException e) {
+                                LOGGER.error(e);
+                            } finally {
+                                postMethod.releaseConnection();
+                            }
+
+                                /* Log only when no 2xx HTTP status codes was returned */
+                            if (i - 200 > 100 || i - 200 < 0) {
+                                LOGGER.error("Message [" + message + "] logged with HTTP Status code " + i + ".");
+                            }
+                        }
                 } catch (BufferUnderflowException bue) {
                     //LOGGER.error(bue);
                     // do nothing
