@@ -134,6 +134,17 @@ public class AsyncWorkManager implements WorkManager {
                                 /* Log only when no 2xx HTTP status codes was returned */
                             if (i - 200 > 100 || i - 200 < 0) {
                                 LOGGER.error("Message [" + message + "] logged with HTTP Status code " + i + ".");
+                            } else {
+                                if (lock.writeLock().tryLock()) {
+                                    try
+                                    {
+                                        buffer.remove();
+                                    } finally {
+                                        lock.writeLock().unlock();
+                                    }
+                                } else {
+                                    Thread.sleep(100);
+                                }
                             }
                         }
                 } catch (BufferUnderflowException bue) {
