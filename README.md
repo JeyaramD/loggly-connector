@@ -17,7 +17,7 @@ The older message is discarded and replaced with a new one. By no means we are e
 Yes, but please take into account the following considerations:
   * Ring buffer may easily overflow under load, so you will be losing messages as soon as that happens (after ´ring_buffer_size´ messages that were queued but not unqueued)
   * If loggly service cannot be reached, the message will be discarded
-- * if loggly returns 503 (throttled), the message will be discarded
+  * if loggly returns 503 (throttled), the message will be discarded
 
 ### I have some XYZ requirement different than yours, can I contribute or add something to it?
 Yes, please! Add a pull request and we can go over it.
