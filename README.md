@@ -14,7 +14,10 @@ The main reason is the ability to save the logs in the cloud. Loggly is a specia
 The older message is discarded and replaced with a new one. By no means we are ensuring that everything that you log using this component will be persisted into loggly. The policy is best-effort and no-blocking above all.
 
 ### Can I use this connector in CloudHub?
-Hell, yes! That's the kind of use case we are aiming at.
+Yes, but please take into account the following considerations:
+  * Ring buffer may easily overflow under load, so you will be losing messages as soon as that happens (after ´ring_buffer_size´ messages that were queued but not unqueued)
+  * If loggly service cannot be reached, the message will be discarded
+- * if loggly returns 503 (throttled), the message will be discarded
 
 ### I have some XYZ requirement different than yours, can I contribute or add something to it?
 Yes, please! Add a pull request and we can go over it.
@@ -44,14 +47,6 @@ The following snippet shows how to use it inside a flow:
 ```
 
 That will log `"This is a test."` each time the flow `testFlow` is executed. 
-
-
-# Authors
-
-  * Emiliano Lesende (@3miliano) - Idea
-  * Mariano de Achaval - Concurrency advisor
-  * Alberto Pose (@thepose) - Implementation
-  * (Add your name here!)
 
 # License
 Copyright 2012 MuleSoft, Inc.
