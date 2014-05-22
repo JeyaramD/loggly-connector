@@ -4,3 +4,15 @@
 .settings
 *.iml
 target
+
+mule-project.xml
+
+src/main/app/mule-deploy.properties
+
+src/main/app/mule-app.properties
+
+src/main/resources/config.properties
+
+*.mflow
+
+src/main/resources/log4j.properties

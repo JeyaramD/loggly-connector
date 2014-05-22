@@ -19,7 +19,6 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
-import org.mule.modules.loggly.LogglyURLProvider;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -35,14 +34,18 @@ public class AsyncWorkManager implements WorkManager {
     private Thread thread;
 
     private String inputKey;
+    private String inputsURL;
+    private String tags;
 
     private ReentrantReadWriteLock lock;
 
     private volatile boolean end = false;
 
-    public AsyncWorkManager(String inputKey) {
+    public AsyncWorkManager(String inputsURL,String inputKey,String tags) {
         this.buffer = new CircularFifoBuffer();
         this.inputKey = inputKey;
+        this.inputsURL = inputKey;
+        this.tags = tags;
 
         lock = new ReentrantReadWriteLock();
 
@@ -118,7 +121,10 @@ public class AsyncWorkManager implements WorkManager {
                                 /* Tried to recycle the PostMethod but that kind of usage
                                  * is deprecated.
                                  */
-                            PostMethod postMethod = new PostMethod(LogglyURLProvider.HTTPS_LOGS_LOGGLY_INPUTS + inputKey);
+                            
+                            String URI = inputsURL + inputKey + "/" + tags;
+                            LOGGER.error("Using URL " + URI);
+                            PostMethod postMethod = new PostMethod(inputsURL + inputKey + "/" + tags);
                             postMethod.setRequestEntity(entity);
 
                             try {

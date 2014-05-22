@@ -10,25 +10,25 @@
 
 package org.mule.modules.loggly;
 
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 import org.junit.Test;
 import org.mule.api.MuleEvent;
 import org.mule.construct.Flow;
 import org.mule.tck.junit4.AbstractMuleContextTestCase;
 import org.mule.tck.junit4.FunctionalTestCase;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 public class LogglyConnectorTest extends FunctionalTestCase
 {
     @Override
     protected Properties getStartUpProperties() {
         Properties properties = new Properties();
-        String [] requiredProperties = {"inputKey", "subdomain", "username", "password"};
+       String [] requiredProperties = {"inputsurl","inputkey", "subdomain", "username", "password"};
+
         List<String> missingProperties = new ArrayList<String>();
 
         for (String requiredProperty : requiredProperties) {
@@ -41,14 +41,15 @@ public class LogglyConnectorTest extends FunctionalTestCase
         }
 
         if (!missingProperties.isEmpty()) {
-            fail("Parameters not specified. Build using -Dloggly.input.key=your_api_key -Dusername=user -Dpassword=password -Dsubdomain=subdomain.");
+        	
+            fail("Parameters not specified. Build using -Dinputsurl=your_url -Dinputkey=your_api_key -Dusername=user -Dpassword=password -Dsubdomain=subdomain." + missingProperties.toString() );
         }
 
         return properties;
     }
 
     @Override
-    protected String getConfigResources()
+    protected String getConfigFile()
     {
         return "mule-config.xml";
     }
@@ -56,155 +57,113 @@ public class LogglyConnectorTest extends FunctionalTestCase
     @Test
     public void testFlow() throws Exception
     {
-        runFlow("testFlow", null);
+    	runFlow("testFlow");
     }
 
     @Test
     public void testRetrieveFlow() throws Exception
     {
-        runFlow("testRetrieveFlow", null);
+        runFlow("testRetrieveFlow","Test");
     }
 
     @Test
     public void testFacetFlow() throws Exception
     {
-        runFlow("testFacetFlow", null);
+        runFlow("testFacetFlow");
+
     }
 
     @Test
     public void testInputFlow() throws Exception
     {
-        runFlow("testInputFlow", null);
+        runFlow("testInputFlow");
     }
 
     @Test
     public void testInputByNameFlow() throws Exception
     {
-        runFlow("testInputByNameFlow", null);
+        runFlow("testInputByNameFlow");
     }
 
     @Test
     public void testInputsFlow() throws Exception
     {
-        runFlow("testInputsFlow", null);
+        runFlow("testInputsFlow");
     }
 
     @Test
     public void testCreateInputFlow() throws Exception
     {
-        runFlow("testCreateInputFlow", null);
+        runFlow("testCreateInputFlow");
     }
 
     @Test
     public void testAddCurrentDeviceFlow() throws Exception
     {
-        runFlow("testAddCurrentDeviceFlow", null);
+        runFlow("testAddCurrentDeviceFlow");
     }
 
     @Test
     public void testAddCurrentDeviceSyslog514Flow() throws Exception
     {
-        runFlow("testAddCurrentDeviceSyslog514Flow", null);
+        runFlow("testAddCurrentDeviceSyslog514Flow");
     }
 
     @Test
     public void testRemoveDeviceFlow() throws Exception
     {
-        runFlow("testRemoveDeviceFlow", null);
+        runFlow("testRemoveDeviceFlow");
     }
 
     @Test
     public void testEnableDiscoveryFlow() throws Exception
     {
-        runFlow("testEnableDiscoveryFlow", null);
+        runFlow("testEnableDiscoveryFlow");
     }
 
     @Test
     public void testDisableDiscoveryFlow() throws Exception
     {
-        runFlow("testDisableDiscoveryFlow", null);
+        runFlow("testDisableDiscoveryFlow");
     }
 
     @Test
     public void testDevicesFlow() throws Exception
     {
-        runFlow("testDevicesFlow", null);
+        runFlow("testDevicesFlow");
     }
 
     @Test
     public void testDeviceFlow() throws Exception
     {
-        runFlow("testDeviceFlow", null);
+        runFlow("testDeviceFlow");
     }
 
     @Test
     public void testAddDeviceFlow() throws Exception
     {
-        runFlow("testAddDeviceFlow", null);
+        runFlow("testAddDeviceFlow");
     }
 
     @Test
     public void testDeleteDeviceFlow() throws Exception
     {
-        runFlow("testDeleteDeviceFlow", null);
+        runFlow("testDeleteDeviceFlow");
     }
 
     @Test
     public void testDeleteDeviceByIpFlow() throws Exception
     {
-        runFlow("testDeleteDeviceByIpFlow", null);
+        runFlow("testDeleteDeviceByIpFlow");
     }
 
-    protected <T, U> Object runFlow(String flowName, U payload) throws Exception
+    protected <T, U> Object runFlow2(String flowName, U payload) throws Exception
     {
         Flow flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleContextTestCase.getTestEvent(payload);
         MuleEvent responseEvent = flow.process(event);
 
         return responseEvent.getMessage().getPayload();
-    }
-
-
-    /**
-    * Run the flow specified by name and assert equality on the expected output
-    *
-    * @param flowName The name of the flow to run
-    * @param expect The expected output
-    */
-    protected <T> void runFlowAndExpect(String flowName, T expect) throws Exception
-    {
-        Flow flow = lookupFlowConstruct(flowName);
-        MuleEvent event = AbstractMuleContextTestCase.getTestEvent(null);
-        MuleEvent responseEvent = flow.process(event);
-
-        assertEquals(expect, responseEvent.getMessage().getPayload());
-    }
-
-    /**
-    * Run the flow specified by name using the specified payload and assert
-    * equality on the expected output
-    *
-    * @param flowName The name of the flow to run
-    * @param expect The expected output
-    * @param payload The payload of the input event
-    */
-    protected <T, U> void runFlowWithPayloadAndExpect(String flowName, T expect, U payload) throws Exception
-    {
-        Flow flow = lookupFlowConstruct(flowName);
-        MuleEvent event = AbstractMuleContextTestCase.getTestEvent(payload);
-        MuleEvent responseEvent = flow.process(event);
-
-        assertEquals(expect, responseEvent.getMessage().getPayload());
-    }
-
-    /**
-     * Retrieve a flow by name from the registry
-     *
-     * @param name Name of the flow to retrieve
-     */
-    protected Flow lookupFlowConstruct(String name)
-    {
-        return (Flow) muleContext.getRegistry().lookupFlowConstruct(name);
     }
 
 }

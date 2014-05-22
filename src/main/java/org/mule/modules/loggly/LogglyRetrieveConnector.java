@@ -21,7 +21,10 @@ import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.Transformer;
+import org.mule.api.annotations.display.Password;
+import org.mule.api.annotations.display.Placement;
 import org.mule.api.annotations.lifecycle.Start;
+import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.rest.*;
@@ -43,12 +46,13 @@ import java.util.List;
  *
  * @author MuleSoft, Inc.
  */
-@Module(name="loggly", schemaVersion="1.0", friendlyName = "Loggly Retrieve", configElementName = "config-retrieve")
+@Module(name="loggly", schemaVersion="1.4", friendlyName = "Loggly Retrieve", configElementName = "config-retrieve")
 public abstract class LogglyRetrieveConnector
 {
     private static final int TIMEOUT = 7200;
 
-    public static final String BASE_URL = LogglyURLProvider.BASE_URL;
+    //public static final String BASE_URL = "http://localhost:8000/{subdomain}.loggly.com/api/"; //URL needed for release
+    public static final String BASE_URL = "https://{subdomain}.loggly.com/api/"; //URL used for testing
 
 
     private static ObjectMapper objectMapper;
@@ -84,25 +88,35 @@ public abstract class LogglyRetrieveConnector
             throw new RuntimeException(e);
         }
     }
-
+    
     /**
      * Logging Subdomain
      */
     @Configurable
+    @Placement( order = 0)
     @RestUriParam("subdomain")
     private String subdomain;
 
-    /**
+
+	/**
      * Loggly Username
      */
     @Configurable
+    @Placement(group = "Credentials", order = 1)
     private String username;
-
+    
     /**
      * Loggly Password
      */
     @Configurable
+    @Password
+    @Placement(group = "Credentials", order = 2)
     private String password;
+    
+
+
+
+
 
     /**
      * REST Http Client
@@ -146,11 +160,11 @@ public abstract class LogglyRetrieveConnector
                     @RestExceptionOn(expression = "#[message.inboundProperties['http.status'] != 200]", exception = LogglyRuntimeException.class)
             })
     public abstract LogglyResultSet search(@RestQueryParam("q") String query,
-                                           @RestQueryParam("rows") @Default("10") @Optional int rows,
-                                           @RestQueryParam("start") @Default("0") @Optional int start,
-                                           @RestQueryParam("from") @Default("NOW-24HOURS") @Optional String from,
-                                           @RestQueryParam("until") @Default("NOW") @Optional String until,
-                                           @RestQueryParam("order") @Default("ASC") @Optional Order order) throws Exception;
+                                           @RestQueryParam("rows") @Default("10")  int rows,
+                                           @RestQueryParam("start") @Default("0")  int start,
+                                           @RestQueryParam("from") @Default("NOW-24HOURS")  String from,
+                                           @RestQueryParam("until") @Default("NOW")  String until,
+                                           @RestQueryParam("order") @Default("ASC")  Order order) throws Exception;
 
     /**
      * Provides faceted results from an account on either date, ip, or input fields. Facets return counts of events over a time range.
@@ -175,10 +189,10 @@ public abstract class LogglyRetrieveConnector
             })
     public abstract LogglyFacetResult facet(@RestQueryParam("q") String query,
                                             @RestUriParam("facet_type") FacetType facetType,
-                                            @RestQueryParam("buckets") @Default("50") @Optional int buckets,
-                                            @RestQueryParam("gap") @Default("+1HOUR") @Optional String gap,
-                                            @RestQueryParam("from") @Default("NOW-1HOUR") @Optional String from,
-                                            @RestQueryParam("until") @Default("NOW") @Optional String until) throws Exception;
+                                            @RestQueryParam("buckets") @Default("50")  int buckets,
+                                            @RestQueryParam("gap") @Default("+1HOUR")  String gap,
+                                            @RestQueryParam("from") @Default("NOW-1HOUR")  String from,
+                                            @RestQueryParam("until") @Default("NOW")  String until) throws Exception;
 
     /**
      * Fetch an input for an account using its id. Without id
@@ -531,16 +545,17 @@ public abstract class LogglyRetrieveConnector
         this.subdomain = subdomain;
     }
 
-    public HttpClient getHttpClient() {
-        return httpClient;
+    public String getUsername() {
+        return username;
     }
-
     public String getPassword() {
         return password;
     }
 
-    public String getUsername() {
-        return username;
+    public HttpClient getHttpClient() {
+        return httpClient;
     }
+
+    
 
 }

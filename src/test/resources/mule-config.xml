@@ -1,121 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:context="http://www.springframework.org/schema/context" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:spring="http://www.springframework.org/schema/beans"
       xmlns:loggly="http://www.mulesoft.org/schema/mule/loggly"
       xmlns:http="http://www.mulesoft.org/schema/mule/http"
       xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey"
-      xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-        http://www.mulesoft.org/schema/mule/loggly http://www.mulesoft.org/schema/mule/loggly/current/mule-loggly.xsd
-        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-        http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd"
-      >
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/loggly http://www.mulesoft.org/schema/mule/loggly/current/mule-loggly.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd" version="EE-3.5.0">
 
-    <loggly:config-logger inputKey="${inputKey}" />
-    <loggly:config-retrieve subdomain="${subdomain}" username="${username}" password="${password}" />
+	<!--     <loggly:config-logger inputKey="${inputKey}" /> -->
+    <loggly:config-logger inputsURL="${inputsurl}" inputKey="${inputkey}"  />
 
-    <flow name="testFlow">
+    <loggly:config-retrieve  subdomain="${subdomain}" username="${username}" password="${password}" />
+    
+
+    <flow name="testFlow" doc:name="testFlow">
         <loggly:logger message="This a test."/>
         <loggly:logger message="This a second test."/>
         <loggly:logger message="This a third test."/>
         <loggly:logger message="This a 4 test."/>
+        <logger message="Test eneded" level="INFO" doc:name="Logger"/>
     </flow>
 
-    <flow name="testRetrieveFlow">
+    <flow name="testRetrieveFlow" doc:name="testRetrieveFlow">
         <loggly:search query="test"/>
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testFacetFlow">
+    <flow name="testFacetFlow" doc:name="testFacetFlow">
         <loggly:facet query="hello" facetType="DATE" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testInputFlow">
+    <flow name="testInputFlow" doc:name="testInputFlow">
         <loggly:input id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testInputByNameFlow">
+    <flow name="testInputByNameFlow" doc:name="testInputByNameFlow">
         <loggly:input-by-name inputName="default" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testInputsFlow">
+    <flow name="testInputsFlow" doc:name="testInputsFlow">
         <loggly:inputs />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testCreateInputFlow">
+    <flow name="testCreateInputFlow" doc:name="testCreateInputFlow">
         <loggly:create-input inputName="anotherInput" description="Meaningful description goes here." service="HTTP" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testAddCurrentDeviceFlow">
+    <flow name="testAddCurrentDeviceFlow" doc:name="testAddCurrentDeviceFlow">
         <loggly:add-current-device id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testAddCurrentDeviceSyslog514Flow">
+    <flow name="testAddCurrentDeviceSyslog514Flow" doc:name="testAddCurrentDeviceSyslog514Flow">
         <loggly:add-current-device-to-syslog514 id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testRemoveDeviceFlow">
+    <flow name="testRemoveDeviceFlow" doc:name="testRemoveDeviceFlow">
         <loggly:remove-device id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testEnableDiscoveryFlow">
+    <flow name="testEnableDiscoveryFlow" doc:name="testEnableDiscoveryFlow">
         <loggly:enable-input-discovery id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testDisableDiscoveryFlow">
+    <flow name="testDisableDiscoveryFlow" doc:name="testDisableDiscoveryFlow">
         <loggly:disable-input-discovery id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testDevicesFlow">
+    <flow name="testDevicesFlow" doc:name="testDevicesFlow">
         <loggly:devices />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testDeviceFlow">
+    <flow name="testDeviceFlow" doc:name="testDeviceFlow">
         <loggly:device id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testAddDeviceFlow">
+    <flow name="testAddDeviceFlow" doc:name="testAddDeviceFlow">
         <loggly:add-device id="26846" ip="0.0.0.0" deviceName="deviceName" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testDeleteDeviceFlow">
+    <flow name="testDeleteDeviceFlow" doc:name="testDeleteDeviceFlow">
         <loggly:delete-device id="26846" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-    <flow name="testDeleteDeviceByIpFlow">
+    <flow name="testDeleteDeviceByIpFlow" doc:name="testDeleteDeviceByIpFlow">
         <loggly:delete-device-by-ip ip="0.0.0.0" />
-        <logger message="#[payload]" level="ERROR"/>
+        <logger message="#[payload]" level="ERROR" doc:name="Logger"/>
     </flow>
 
-
-    <flow name="mockAPI">
-        <http:inbound-endpoint address="http://localhost:8000" exchange-pattern="request-response"/>
-        <jersey:resources>
+ 
+    <flow name="mockAPI" doc:name="mockAPI">
+        <http:inbound-endpoint address="http://localhost:8000" exchange-pattern="request-response" doc:name="HTTP"/>
+        <jersey:resources doc:name="REST">
             <component class="org.mule.modules.loggly.test.APIMock"/>
         </jersey:resources>
     </flow>
 
-    <flow name="mockAPIAsync">
-        <http:inbound-endpoint address="http://localhost:8001" exchange-pattern="request-response"/>
-        <jersey:resources>
+    <flow name="mockAPIAsync" doc:name="mockAPIAsync">
+        <http:inbound-endpoint address="http://localhost:8001" exchange-pattern="request-response" doc:name="HTTP"/>
+        <jersey:resources doc:name="REST">
             <component class="org.mule.modules.loggly.test.APIAsyncMock"/>
         </jersey:resources>
     </flow>
-
+ 
 </mule>
